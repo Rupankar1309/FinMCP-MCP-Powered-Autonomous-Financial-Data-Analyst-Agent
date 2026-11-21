@@ -1,0 +1,13 @@
+# This project targets mcp 2.x (MCPServer), the current stable line as of Sept 2026.
+# mcp 2.x renamed FastMCP -> MCPServer and changed several internal APIs vs 1.x.
+# `pip install mcp` installs 2.x by default; if a tutorial you're reading shows
+# `from mcp.server.fastmcp import FastMCP`, that's the older 1.x API — this repo
+# doesn't use it. See: https://py.sdk.modelcontextprotocol.io/v2/migration/
+mcp>=2.0
+ollama>=0.4.7
+yfinance>=1.7.0
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.9
+streamlit>=1.40
+pytest>=8.0  # dev dependency, for tests/

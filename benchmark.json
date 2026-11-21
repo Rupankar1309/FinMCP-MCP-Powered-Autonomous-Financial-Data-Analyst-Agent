@@ -1,0 +1,82 @@
+{
+  "_comment": "Each question has an oracle spec: which analytics function computes the ground truth, and which field of its output the agent's numeric answer should match (within tolerance_pct). run_eval.py computes the oracle value live from the SAME data the agent's tools use, so ground truth never goes stale.",
+  "tolerance_pct_default": 3.0,
+  "period_default": "6mo",
+  "questions": [
+    {
+      "id": "q1",
+      "query": "What was AAPL's cumulative return over the last 6 months?",
+      "oracle_fn": "compute_returns",
+      "oracle_tickers": ["AAPL"],
+      "oracle_field": "cumulative_return_pct"
+    },
+    {
+      "id": "q2",
+      "query": "What is MSFT's current 20-day simple moving average?",
+      "oracle_fn": "compute_moving_averages",
+      "oracle_tickers": ["MSFT"],
+      "oracle_field": "sma_20"
+    },
+    {
+      "id": "q3",
+      "query": "How volatile has TSLA's stock been over the last 6 months, annualized?",
+      "oracle_fn": "compute_volatility",
+      "oracle_tickers": ["TSLA"],
+      "oracle_field": "full_period_annualized_volatility_pct"
+    },
+    {
+      "id": "q4",
+      "query": "Which performed better over the last 6 months, GOOGL or AMZN?",
+      "oracle_fn": "compare_stocks",
+      "oracle_tickers": ["GOOGL", "AMZN"],
+      "oracle_field": "best_performer",
+      "match_type": "string_contains"
+    },
+    {
+      "id": "q5",
+      "query": "What was NVDA's single worst trading day (by return) in the last 6 months, and what was the return?",
+      "oracle_fn": "compute_returns",
+      "oracle_tickers": ["NVDA"],
+      "oracle_field": "worst_day.return_pct"
+    },
+    {
+      "id": "q6",
+      "query": "How many statistically anomalous trading days has AMD had in the last 6 months (z-score >= 2.5)?",
+      "oracle_fn": "detect_price_anomalies",
+      "oracle_tickers": ["AMD"],
+      "oracle_field": "num_anomalies",
+      "tolerance_pct": 0
+    },
+    {
+      "id": "q7",
+      "query": "What's the 50-day moving average for JPM right now?",
+      "oracle_fn": "compute_moving_averages",
+      "oracle_tickers": ["JPM"],
+      "oracle_field": "sma_50"
+    },
+    {
+      "id": "q8",
+      "query": "How correlated are META and AMZN's daily returns over the last 6 months?",
+      "oracle_fn": "correlation_matrix",
+      "oracle_tickers": ["META", "AMZN"],
+      "oracle_field": "matrix.META.AMZN",
+      "tolerance_pct": 15
+    },
+    {
+      "id": "q9",
+      "query": "What was AAPL's average daily return over the last 6 months?",
+      "oracle_fn": "compute_returns",
+      "oracle_tickers": ["AAPL"],
+      "oracle_field": "avg_daily_return_pct",
+      "tolerance_pct": 15
+    },
+    {
+      "id": "q10",
+      "query": "What sector is MSFT in?",
+      "oracle_fn": "company_sector",
+      "oracle_tickers": ["MSFT"],
+      "oracle_field": "sector",
+      "match_type": "string_contains"
+    }
+  ]
+}
