@@ -1,11 +1,4 @@
 # FinMCP-MCP-Powered-Autonomous-Financial-Data-Analyst-Agent
-Engineered FinMCP, an autonomous finance-analysis agent using MCP, integrating 8 modular analytical tools with Qwen3:8B LLM via Ollama. Implemented tool grounded execution, routing numerical responses through verified function calls which minimizes numeric hallucinations. Model achieves 78% lower latency and a 4.5x speedup with no accuracy loss.
-# FinMCP: MCP-Powered Autonomous Finance Analyst Agent
-
-![Python](https://img.shields.io/badge/Python-3.12%2B-blue)
-![MCP](https://img.shields.io/badge/Protocol-MCP%202.x-purple)
-![Ollama](https://img.shields.io/badge/LLM-Ollama%20%7C%20Qwen3%208B-black)
-![Tests](https://img.shields.io/badge/unit%20tests-11%20passing-brightgreen)
 
 A finance data-analysis agent that runs **fully locally**. A Qwen3 model served by Ollama plans and executes analyses by calling tools exposed over the **Model Context Protocol (MCP)**. Every number in an answer comes from a real tool call over real market data, so the model never has to guess a figure.
 
